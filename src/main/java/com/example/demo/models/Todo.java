@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 public class Todo {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "todo_seq")
     private Integer id;
     private String title;
     private Boolean completed;

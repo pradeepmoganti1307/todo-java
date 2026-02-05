@@ -5,7 +5,6 @@ import com.example.demo.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -20,5 +19,9 @@ public class TodoService {
 
     public List<Todo> list() {
         return todoRepository.findAll();
+    }
+
+    public Todo save(Todo todo) {
+        return todoRepository.save(todo);
     }
 }
