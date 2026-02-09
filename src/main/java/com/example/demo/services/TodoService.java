@@ -12,7 +12,6 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    @Autowired
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
@@ -23,5 +22,20 @@ public class TodoService {
 
     public Todo save(Todo todo) {
         return todoRepository.save(todo);
+    }
+
+    public Todo update(Integer id, Todo todo) {
+        Todo existingTodo = todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
+
+        existingTodo.setTitle(todo.getTitle());
+        existingTodo.setCompleted(todo.getCompleted());
+        
+        return todoRepository.save(existingTodo);
+    }
+
+    public void delete(Integer id) {
+        Todo existingTodo = todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
+        todoRepository.delete(existingTodo);
+        return;
     }
 }
