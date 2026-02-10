@@ -2,7 +2,6 @@ package com.example.demo.services;
 
 import com.example.demo.models.Todo;
 import com.example.demo.repositories.TodoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +36,9 @@ public class TodoService {
         Todo existingTodo = todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
         todoRepository.delete(existingTodo);
         return;
+    }
+
+    public List<Todo> findByCompleted(Boolean complete) {
+        return todoRepository.findByCompleted(complete);
     }
 }

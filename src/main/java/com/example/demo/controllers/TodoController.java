@@ -29,6 +29,11 @@ public class TodoController {
         return new ArrayList<>(todoService.list());
     }
 
+    @GetMapping("/{status}")
+    public List<Todo> fetchTodos(@PathVariable Boolean status) {
+        return new ArrayList<>(todoService.findByCompleted(status));
+    }
+
     @PutMapping("/{id}")
     public Todo updateTodo(@PathVariable Integer id, @RequestBody Todo todo) {
         return todoService.update(id, todo);

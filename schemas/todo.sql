@@ -11,3 +11,4 @@ CREATE TABLE todo (
 ALTER SEQUENCE todo_seq OWNED BY todo.id;
 
 INSERT INTO todo (title, completed) VALUES ('First task', false);
+INSERT INTO todo (title, completed) VALUES ('Second task', true);
